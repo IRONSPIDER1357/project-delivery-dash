@@ -6,6 +6,7 @@ public class Delivery : MonoBehaviour
     [SerializeField] float destroyDelay = 1f; 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Dectect if player has packet or not and if not, packet is picked up and destoryed from the world
         if(collision.CompareTag("Packet") && !hasPacket)
         {
             Debug.Log("Packet picked up!");
@@ -14,6 +15,7 @@ public class Delivery : MonoBehaviour
             Destroy(collision.gameObject, destroyDelay);
         }
 
+        //delivers the packet and set the hasPacket value back to false
         if(collision.CompareTag("Customer") && hasPacket)
         {
             Debug.Log("Packet Delivered");
